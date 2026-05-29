@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bastien Verley — Ingénieur Structures & Calcul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1117;
+    --surface: #161b27;
+    --surface2: #1d2535;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --accent-warm: #f59e0b;
+    --text: #e2e8f0;
+    --text-muted: #8896b3;
+    --text-dim: #4a5568;
+    --border: #2a3450;
+    --mono: 'DM Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --radius: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    background: rgba(14, 17, 23, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent2); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .name-accent {
+    color: var(--accent2);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: var(--display);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    margin: 1.25rem 0 2.5rem;
+    max-width: 520px;
+    line-height: 1.5;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    background: var(--surface);
+  }
+
+  .badge.highlight {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.08);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-1px); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 1.0rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent2);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── PROJET PRINCIPAL ── */
+  .project-main {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .project-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2044 100%);
+    padding: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative diagram lines in bg */
+  .project-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .project-header::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+  }
+
+  .project-type {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-title {
+    font-family: var(--display);
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-org {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-org span {
+    color: var(--accent-warm);
+  }
+
+  .project-body {
+    padding: 2rem 2.5rem;
+  }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    font-size: 0.97rem;
+  }
+
+  .project-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .feature-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 4px;
+    color: var(--accent2);
+  }
+
+  /* ── SCHÉMA SVG ── */
+  .schema-wrapper {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .schema-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .skill-list li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .contact-box h3 {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-box p {
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.06);
+  }
+
+  .contact-link svg { flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.45s; }
+  .delay-5 { animation-delay: 0.6s; }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .project-features { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .project-header, .project-body { padding: 1.5rem; }
+    .contact-box { padding: 2rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="nav-logo">BV<span style="color:var(--text-dim)">_portfolio</span></span>
+    <ul class="nav-links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-tag fade-up">Ingénieur en formation · Polytech Lille 4A</div>
+    <h1 class="fade-up delay-1">
+      Bastien<br>
+      <span class="name-accent">Verley</span>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Calcul de structures ferroviaires, automatisation réglementaire et outillage Python/HyperView.
+      <span class="cursor"></span>
+    </p>
+    <div class="hero-badges fade-up delay-3">
+      <span class="badge highlight">EN 17149-3</span>
+      <span class="badge highlight">EC3 · EC9</span>
+      <span class="badge">Python</span>
+      <span class="badge">PyQt5</span>
+      <span class="badge">Altair HyperView</span>
+      <span class="badge">Fatigue structures</span>
+      <span class="badge">Bureau d'études</span>
+    </div>
+    <div class="cta-row fade-up delay-4">
+      <a href="#projets" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
+        Voir le projet
+      </a>
+      <a href="#contact" class="btn btn-ghost">
+        Me contacter
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ À PROPOS ═══════════════ -->
+<section id="apropos">
+  <div class="container">
+    <p class="section-label">01 — Profil</p>
+    <h2>À propos</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Étudiant ingénieur <strong>4ème année à Polytech Lille</strong> (spécialité mécanique & structures), 
+          je réalise actuellement un stage de 6 mois chez <strong>CIMES France</strong>, bureau d'études 
+          spécialisé dans les structures ferroviaires.
+        </p>
+        <p>
+          Mon terrain de jeu : transformer des vérifications réglementaires complexes — calcul à la 
+          fatigue selon les normes européennes EN&nbsp;17149, EC3 et EC9 — en outils automatisés, 
+          fiables et directement utilisables en bureau d'études.
+        </p>
+        <p>
+          En fin de 5A, je projette de <strong>proposer des prestations freelance</strong> en calcul de 
+          structures, automatisation de processus ingénierie et développement d'outils métier.
+        </p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-num">EN</span>
+          <span class="stat-label">17149-3 maîtrisée</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">2</span>
+          <span class="stat-label">normes EC (EC3 & EC9)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">6mo</span>
+          <span class="stat-label">stage bureau d'études</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">4A</span>
+          <span class="stat-label">Polytech Lille</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJETS ═══════════════ -->
+<section id="projets">
+  <div class="container">
+    <p class="section-label">02 — Réalisations</p>
+    <h2>Projets</h2>
+
+    <div class="project-main">
+      <div class="project-header">
+        <p class="project-type">Projet principal · Stage ingénieur 2025</p>
+        <h3 class="project-title">Outil de vérification réglementaire à la fatigue</h3>
+        <p class="project-org">CIMES France · intégré dans <span>Altair HyperView 2025</span></p>
+      </div>
+
+      <div class="project-body">
+        <p class="project-desc">
+          Développement d'un plugin complet intégré à Altair HyperView permettant d'automatiser 
+          entièrement la vérification à la fatigue de structures ferroviaires. L'outil lit les 
+          résultats éléments finis, applique les méthodologies normatives (EN 17149-3, EC3, EC9), 
+          et génère un rapport de conformité structuré — remplaçant des heures de post-traitement 
+          manuel par quelques clics.
+        </p>
+
+        <!-- Schéma flux de données -->
+        <div class="schema-wrapper">
+          <p class="schema-title">// Architecture · flux de données</p>
+          <svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6" opacity="0.7"/>
+              </marker>
+            </defs>
+            <!-- boxes -->
+            <rect x="10" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
+            <text x="75" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">FE RESULTS</text>
+            <text x="75" y="93" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="9">HyperView API</text>
+
+            <rect x="200" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
+            <text x="265" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">EXTRACTION</text>
+            <text x="265" y="93" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="9">Python · NumPy</text>
+
+            <rect x="390" y="40" width="145" height="80" rx="6" fill="rgba(59,130,246,0.08)" stroke="#3b82f6" stroke-width="1.2"/>
+            <text x="462" y="68" text-anchor="middle" fill="#93c5fd" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">VÉRIFICATION</text>
+            <text x="462" y="84" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="8">EN 17149-3</text>
+            <text x="462" y="98" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="8">EC3 · EC9</text>
+
+            <rect x="590" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
+            <text x="655" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">RAPPORT</text>
+            <text x="655" y="93" text-anchor="middle" fill="#f59e0b" font-family="DM Mono, monospace" font-size="9">PyQt5 GUI</text>
+
+            <!-- arrows -->
+            <line x1="141" y1="80" x2="198" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+            <line x1="331" y1="80" x2="388" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+            <line x1="536" y1="80" x2="588" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
+
+            <!-- labels below arrows -->
+            <text x="169" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">lecture</text>
+            <text x="359" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">calcul</text>
+            <text x="562" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">sortie</text>
+          </svg>
+        </div>
+
+        <div class="project-features">
+          <div class="feature"><span class="feature-dot"></span>Lecture automatique des contraintes nodales depuis HyperView via API</div>
+          <div class="feature"><span class="feature-dot"></span>Application des courbes de fatigue S-N (normes EN 17149-3)</div>
+          <div class="feature"><span class="feature-dot"></span>Vérification des assemblages acier (EC3) et aluminium (EC9)</div>
+          <div class="feature"><span class="feature-dot"></span>Interface graphique PyQt5 intégrée nativement dans HyperView</div>
+          <div class="feature"><span class="feature-dot"></span>Génération d'un rapport de conformité structuré et exportable</div>
+          <div class="feature"><span class="feature-dot"></span>Paramétrage des cas de charge et des classes de détail</div>
+        </div>
+
+        <div class="tech-stack">
+          <span class="tech">Python 3</span>
+          <span class="tech">PyQt5</span>
+          <span class="tech">Altair HyperView 2025</span>
+          <span class="tech">HyperView Python API</span>
+          <span class="tech">NumPy</span>
+          <span class="tech">EN 17149-3</span>
+          <span class="tech">Eurocode 3</span>
+          <span class="tech">Eurocode 9</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ COMPÉTENCES ═══════════════ -->
+<section id="competences">
+  <div class="container">
+    <p class="section-label">03 — Savoir-faire</p>
+    <h2>Compétences</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Calcul & Normes</p>
+        <ul class="skill-list">
+          <li>Calcul à la fatigue</li>
+          <li>EN 17149-3 (ferroviaire)</li>
+          <li>Eurocode 3 (acier)</li>
+          <li>Eurocode 9 (aluminium)</li>
+          <li>Analyse éléments finis</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Développement</p>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>PyQt5 (GUI)</li>
+          <li>NumPy / SciPy</li>
+          <li>API HyperView</li>
+          <li>Git</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Logiciels</p>
+        <ul class="skill-list">
+          <li>Altair HyperView</li>
+          <li>Altair HyperMesh</li>
+          <li>Abaqus / OptiStruct</li>
+          <li>SolidWorks</li>
+          <li>MS Office</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Bureau d'études</p>
+        <ul class="skill-list">
+          <li>Post-traitement FEA</li>
+          <li>Rédaction de notes de calcul</li>
+          <li>Rapports de conformité</li>
+          <li>Mécanique des structures</li>
+          <li>Environnement ferroviaire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">04 — Contact</p>
+    <h2>Travaillons ensemble</h2>
+    <div class="contact-box">
+      <h3>Vous avez un projet ?</h3>
+      <p>
+        Disponible pour des missions freelance dès la fin de ma 5A — calcul de structures, 
+        automatisation d'outils ingénierie, vérifications réglementaires.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:bastien.verley@example.com" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          bastien.verley@example.com
+        </a>
+        <a href="https://www.linkedin.com/in/bastien-verley" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/bastien-verley" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Bastien Verley · Polytech Lille · CIMES France</p>
+  </div>
+</footer>
+
+</body>
+</html>
