@@ -436,6 +436,96 @@
     margin-bottom: 1rem;
   }
  
+  /* ── DÉMO VIDÉO ── */
+  .demo-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(59,130,246,0.15) 0%, transparent 55%),
+      linear-gradient(135deg, #0f172a 0%, #161b27 60%, #0f2044 100%);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .demo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .demo-placeholder {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .play-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.1);
+    border: 1.5px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 8px rgba(59,130,246,0.06);
+  }
+
+  .demo-status {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .demo-status-sub {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    max-width: 320px;
+  }
+
+  .demo-caption {
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 0.95rem;
+  }
+
+  .demo-caption strong { color: var(--text); font-weight: 500; }
+
+  .demo-chapters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .demo-chapter {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+    background: var(--surface);
+  }
+ 
   /* ── SKILLS ── */
   .skills-grid {
     display: grid;
@@ -636,6 +726,7 @@
     <ul class="nav-links">
       <li><a href="#apropos">À propos</a></li>
       <li><a href="#projets">Projets</a></li>
+      <li><a href="#demo">Démo</a></li>
       <li><a href="#competences">Compétences</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -811,11 +902,55 @@
  
   </div>
 </section>
+
+<!-- ═══════════════ DÉMO VIDÉO ═══════════════ -->
+<section id="demo">
+  <div class="container">
+    <p class="section-label">03 — En action</p>
+    <h2>Démo</h2>
+
+    <!--
+      Pour intégrer la vraie vidéo plus tard, remplacer le bloc .demo-frame
+      ci-dessous par exemple par :
+
+      <div class="demo-frame" style="align-items:stretch;justify-content:stretch;">
+        <video controls style="width:100%;height:100%;object-fit:cover;" poster="demo-poster.jpg">
+          <source src="demo-outil-fatigue.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      ou un embed YouTube/Vimeo à la place du <video>.
+    -->
+    <div class="demo-frame">
+      <div class="demo-placeholder">
+        <div class="play-circle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#60a5fa"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p class="demo-status">Vidéo de démonstration — bientôt disponible</p>
+        <p class="demo-status-sub">Format 2 min max · outil en fonctionnement réel dans HyperView</p>
+      </div>
+    </div>
+
+    <p class="demo-caption">
+      Cette courte vidéo montre l'outil en conditions réelles : import des résultats éléments finis 
+      dans HyperView, lancement de la vérification à la fatigue, et génération du contour de dommage 
+      et du rapport de conformité — <strong>de l'import du modèle au résultat final, sans manipulation 
+      manuelle intermédiaire</strong>.
+    </p>
+
+    <div class="demo-chapters">
+      <span class="demo-chapter">00:00 — Import modèle</span>
+      <span class="demo-chapter">00:25 — Lancement du calcul</span>
+      <span class="demo-chapter">01:00 — Contour de dommage</span>
+      <span class="demo-chapter">01:35 — Rapport généré</span>
+    </div>
+  </div>
+</section>
  
 <!-- ═══════════════ COMPÉTENCES ═══════════════ -->
 <section id="competences">
   <div class="container">
-    <p class="section-label">03 — Savoir-faire</p>
+    <p class="section-label">04 — Savoir-faire</p>
     <h2>Compétences</h2>
     <div class="skills-grid">
       <div class="skill-group">
@@ -865,7 +1000,7 @@
 <!-- ═══════════════ CONTACT ═══════════════ -->
 <section id="contact">
   <div class="container">
-    <p class="section-label">04 — Contact</p>
+    <p class="section-label">05 — Contact</p>
     <h2>Travaillons ensemble</h2>
     <div class="contact-box">
       <h3>Vous avez un projet ?</h3>
@@ -893,7 +1028,7 @@
  
 <footer>
   <div class="container">
-    <p>© 2025 Bastien Verley · Polytech Lille · CIMES France</p>
+    <p>© 2026 Bastien Verley · Polytech Lille · CIMES France</p>
   </div>
 </footer>
  
