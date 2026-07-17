@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bastien Verley — Ingénieur Structures & Calcul</title>
+<title>Bastien Verley — Structural &amp; Fatigue Engineering</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -23,11 +23,11 @@
     --body: 'DM Sans', sans-serif;
     --radius: 8px;
   }
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -36,7 +36,7 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
- 
+
   /* ── NOISE OVERLAY ── */
   body::before {
     content: '';
@@ -47,7 +47,7 @@
     z-index: 9999;
     opacity: 0.4;
   }
- 
+
   /* ── GRID BACKGROUND ── */
   body::after {
     content: '';
@@ -61,7 +61,7 @@
     pointer-events: none;
     z-index: 0;
   }
- 
+
   .container {
     max-width: 900px;
     margin: 0 auto;
@@ -69,7 +69,7 @@
     position: relative;
     z-index: 1;
   }
- 
+
   /* ── NAV ── */
   nav {
     position: fixed;
@@ -80,7 +80,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
- 
+
   nav .inner {
     max-width: 900px;
     margin: 0 auto;
@@ -89,20 +89,20 @@
     justify-content: space-between;
     align-items: center;
   }
- 
+
   .nav-logo {
     font-family: var(--mono);
     font-size: 0.85rem;
     color: var(--accent2);
     letter-spacing: 0.05em;
   }
- 
+
   .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
   }
- 
+
   .nav-links a {
     font-family: var(--mono);
     font-size: 0.78rem;
@@ -111,9 +111,9 @@
     letter-spacing: 0.05em;
     transition: color 0.2s;
   }
- 
+
   .nav-links a:hover { color: var(--accent2); }
- 
+
   /* ── HERO ── */
   #hero {
     min-height: 100vh;
@@ -121,7 +121,7 @@
     align-items: center;
     padding: 8rem 0 4rem;
   }
- 
+
   .hero-tag {
     font-family: var(--mono);
     font-size: 0.75rem;
@@ -133,14 +133,14 @@
     align-items: center;
     gap: 0.75rem;
   }
- 
+
   .hero-tag::before {
     content: '';
     width: 32px;
     height: 1px;
     background: var(--accent);
   }
- 
+
   h1 {
     font-family: var(--display);
     font-size: clamp(2.8rem, 7vw, 5.5rem);
@@ -149,12 +149,12 @@
     letter-spacing: -0.02em;
     margin-bottom: 0.25rem;
   }
- 
+
   .name-accent {
     color: var(--accent2);
     display: block;
   }
- 
+
   .hero-sub {
     font-family: var(--display);
     font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -164,14 +164,14 @@
     max-width: 520px;
     line-height: 1.5;
   }
- 
+
   .hero-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 3rem;
   }
- 
+
   .badge {
     font-family: var(--mono);
     font-size: 0.72rem;
@@ -182,19 +182,19 @@
     letter-spacing: 0.04em;
     background: var(--surface);
   }
- 
+
   .badge.highlight {
     border-color: var(--accent);
     color: var(--accent2);
     background: rgba(59,130,246,0.08);
   }
- 
+
   .cta-row {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
- 
+
   .btn {
     font-family: var(--mono);
     font-size: 0.8rem;
@@ -209,26 +209,26 @@
     cursor: pointer;
     border: none;
   }
- 
+
   .btn-primary {
     background: var(--accent);
     color: #fff;
   }
   .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
- 
+
   .btn-ghost {
     background: transparent;
     color: var(--text-muted);
     border: 1px solid var(--border);
   }
   .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-1px); }
- 
+
   /* ── SECTIONS ── */
   section {
     padding: 5rem 0;
     border-top: 1px solid var(--border);
   }
- 
+
   .section-label {
     font-family: var(--mono);
     font-size: 0.72rem;
@@ -237,7 +237,7 @@
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
- 
+
   h2 {
     font-family: var(--display);
     font-size: clamp(1.6rem, 4vw, 2.4rem);
@@ -245,7 +245,7 @@
     margin-bottom: 3rem;
     letter-spacing: -0.01em;
   }
- 
+
   /* ── ABOUT ── */
   .about-grid {
     display: grid;
@@ -253,7 +253,7 @@
     gap: 3rem;
     align-items: start;
   }
- 
+
   .about-text p {
     color: var(--text-muted);
     font-size: 1.0rem;
@@ -261,22 +261,22 @@
     margin-bottom: 1rem;
     font-weight: 300;
   }
- 
+
   .about-text p strong { color: var(--text); font-weight: 500; }
- 
+
   .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
- 
+
   .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem;
   }
- 
+
   .stat-num {
     font-family: var(--display);
     font-size: 2rem;
@@ -286,7 +286,7 @@
     line-height: 1;
     margin-bottom: 0.25rem;
   }
- 
+
   .stat-label {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -294,7 +294,7 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
- 
+
   /* ── PROJET PRINCIPAL ── */
   .project-main {
     background: var(--surface);
@@ -304,7 +304,7 @@
     margin-bottom: 2rem;
     position: relative;
   }
- 
+
   .project-header {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2044 100%);
     padding: 2.5rem;
@@ -312,7 +312,7 @@
     position: relative;
     overflow: hidden;
   }
- 
+
   /* Decorative diagram lines in bg */
   .project-header::before {
     content: '';
@@ -323,7 +323,7 @@
       linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px);
     background-size: 24px 24px;
   }
- 
+
   .project-header::after {
     content: '';
     position: absolute;
@@ -332,7 +332,7 @@
     border-radius: 50%;
     background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
   }
- 
+
   .project-type {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -341,7 +341,7 @@
     text-transform: uppercase;
     margin-bottom: 0.75rem;
   }
- 
+
   .project-title {
     font-family: var(--display);
     font-size: clamp(1.2rem, 3vw, 1.75rem);
@@ -351,7 +351,7 @@
     position: relative;
     z-index: 1;
   }
- 
+
   .project-org {
     font-family: var(--mono);
     font-size: 0.78rem;
@@ -359,15 +359,15 @@
     position: relative;
     z-index: 1;
   }
- 
+
   .project-org span {
     color: var(--accent-warm);
   }
- 
+
   .project-body {
     padding: 2rem 2.5rem;
   }
- 
+
   .project-desc {
     color: var(--text-muted);
     font-weight: 300;
@@ -375,14 +375,14 @@
     margin-bottom: 2rem;
     font-size: 0.97rem;
   }
- 
+
   .project-features {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     margin-bottom: 2rem;
   }
- 
+
   .feature {
     display: flex;
     align-items: flex-start;
@@ -391,7 +391,7 @@
     color: var(--text-muted);
     font-weight: 300;
   }
- 
+
   .feature-dot {
     width: 6px;
     height: 6px;
@@ -400,13 +400,13 @@
     flex-shrink: 0;
     margin-top: 0.5rem;
   }
- 
+
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
- 
+
   .tech {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -416,7 +416,7 @@
     border-radius: 4px;
     color: var(--accent2);
   }
- 
+
   /* ── SCHÉMA SVG ── */
   .schema-wrapper {
     background: var(--surface2);
@@ -426,7 +426,7 @@
     margin-bottom: 2rem;
     overflow: hidden;
   }
- 
+
   .schema-title {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -435,7 +435,7 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
- 
+
   /* ── DÉMO VIDÉO ── */
   .demo-frame {
     position: relative;
@@ -532,14 +532,14 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
   }
- 
+
   .skill-group {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem;
   }
- 
+
   .skill-group-title {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -548,14 +548,14 @@
     text-transform: uppercase;
     margin-bottom: 0.75rem;
   }
- 
+
   .skill-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
   }
- 
+
   .skill-list li {
     font-size: 0.88rem;
     color: var(--text-muted);
@@ -564,7 +564,7 @@
     align-items: center;
     gap: 0.5rem;
   }
- 
+
   .skill-list li::before {
     content: '';
     width: 4px; height: 4px;
@@ -572,7 +572,7 @@
     background: var(--border);
     flex-shrink: 0;
   }
- 
+
   /* ── CONTACT ── */
   .contact-box {
     background: var(--surface);
@@ -583,7 +583,7 @@
     position: relative;
     overflow: hidden;
   }
- 
+
   .contact-box::before {
     content: '';
     position: absolute;
@@ -592,14 +592,14 @@
     width: 300px; height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
   }
- 
+
   .contact-box h3 {
     font-family: var(--display);
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
   }
- 
+
   .contact-box p {
     color: var(--text-muted);
     font-weight: 300;
@@ -608,14 +608,14 @@
     margin-left: auto;
     margin-right: auto;
   }
- 
+
   .contact-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
   }
- 
+
   .contact-link {
     font-family: var(--mono);
     font-size: 0.78rem;
@@ -629,47 +629,47 @@
     gap: 0.5rem;
     transition: all 0.2s;
   }
- 
+
   .contact-link:hover {
     border-color: var(--accent2);
     color: var(--accent2);
     background: rgba(59,130,246,0.06);
   }
- 
+
   .contact-link svg { flex-shrink: 0; }
- 
+
   /* ── FOOTER ── */
   footer {
     padding: 2rem 0;
     border-top: 1px solid var(--border);
     text-align: center;
   }
- 
+
   footer p {
     font-family: var(--mono);
     font-size: 0.72rem;
     color: var(--text-dim);
     letter-spacing: 0.05em;
   }
- 
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
- 
+
   .fade-up { animation: fadeUp 0.6s ease both; }
   .delay-1 { animation-delay: 0.1s; }
   .delay-2 { animation-delay: 0.2s; }
   .delay-3 { animation-delay: 0.3s; }
   .delay-4 { animation-delay: 0.45s; }
   .delay-5 { animation-delay: 0.6s; }
- 
+
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
- 
+
   .cursor {
     display: inline-block;
     width: 3px;
@@ -679,18 +679,18 @@
     vertical-align: middle;
     animation: blink 1s step-end infinite;
   }
- 
+
   /* ── PHOTO ── */
   .hero-layout {
     display: flex;
     align-items: center;
     gap: 3.5rem;
   }
- 
+
   .hero-photo-wrap {
     flex-shrink: 0;
   }
- 
+
   .hero-photo {
     width: 160px;
     height: 160px;
@@ -701,12 +701,12 @@
     box-shadow: 0 0 0 6px rgba(59,130,246,0.1), 0 8px 32px rgba(0,0,0,0.4);
     display: block;
   }
- 
+
   @media (max-width: 640px) {
     .hero-layout { flex-direction: column; gap: 2rem; }
     .hero-photo { width: 120px; height: 120px; }
   }
- 
+
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     .about-grid { grid-template-columns: 1fr; }
@@ -719,35 +719,35 @@
 </style>
 </head>
 <body>
- 
+
 <nav>
   <div class="inner">
     <span class="nav-logo">BV<span style="color:var(--text-dim)">_portfolio</span></span>
     <ul class="nav-links">
-      <li><a href="#apropos">À propos</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#demo">Démo</a></li>
-      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#apropos">About</a></li>
+      <li><a href="#projets">Projects</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#competences">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
- 
+
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
   <div class="container">
     <div class="hero-layout">
       <div class="hero-photo-wrap fade-up">
-        <img src="photo portfolio.jpg" alt="Bastien Verley" class="hero-photo">
+        <img src="photo-portfolio.jpg" alt="Bastien Verley" class="hero-photo">
       </div>
       <div>
-        <div class="hero-tag fade-up delay-1">Ingénieur en formation · Polytech Lille 4A</div>
+        <div class="hero-tag fade-up delay-1">Engineering student · Polytech Lille, Year 4</div>
         <h1 class="fade-up delay-2">
           Bastien<br>
           <span class="name-accent">Verley</span>
         </h1>
         <p class="hero-sub fade-up delay-3">
-          Calcul de structures ferroviaires, automatisation réglementaire et outillage Python/HyperView.
+          Railway structural fatigue analysis, regulatory automation, and Python/HyperView tooling.
           <span class="cursor"></span>
         </p>
         <div class="hero-badges fade-up delay-4">
@@ -756,92 +756,88 @@
           <span class="badge">Python</span>
           <span class="badge">PyQt5</span>
           <span class="badge">Altair HyperView</span>
-          <span class="badge">Fatigue structures</span>
-          <span class="badge">Bureau d'études</span>
+          <span class="badge">Structural fatigue</span>
+          <span class="badge">Engineering office</span>
         </div>
         <div class="cta-row fade-up delay-5">
           <a href="#projets" class="btn btn-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
-            Voir le projet
+            View project
           </a>
           <a href="#contact" class="btn btn-ghost">
-            Me contacter
+            Contact me
           </a>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════════════ À PROPOS ═══════════════ -->
 <section id="apropos">
   <div class="container">
-    <p class="section-label">01 — Profil</p>
-    <h2>À propos</h2>
+    <p class="section-label">01 — Profile</p>
+    <h2>About</h2>
     <div class="about-grid">
       <div class="about-text">
         <p>
-          Étudiant ingénieur <strong>4ème année à Polytech Lille</strong> (spécialité mécanique & structures), 
-          je réalise actuellement un stage de 6 mois chez <strong>CIMES France</strong>, bureau d'études 
-          spécialisé dans les structures ferroviaires.
+          <strong>4th-year engineering student at Polytech Lille</strong> (mechanics & structures track), 
+          currently completing a 6-month internship at <strong>CIMES France</strong>, an engineering 
+          firm specialised in railway structures.
         </p>
         <p>
-          Mon terrain de jeu : transformer des vérifications réglementaires complexes — calcul à la 
-          fatigue selon les normes européennes EN&nbsp;17149, EC3 et EC9 — en outils automatisés, 
-          fiables et directement utilisables en bureau d'études.
-        </p>
-        <p>
-          En fin de 5A, je projette de <strong>proposer des prestations freelance</strong> en calcul de 
-          structures, automatisation de processus ingénierie et développement d'outils métier.
+          My focus: turning complex regulatory checks — fatigue calculation under the European 
+          standards EN&nbsp;17149, EC3 and EC9 — into automated, reliable tools that are directly 
+          usable in an engineering office.
         </p>
       </div>
       <div class="stat-grid">
         <div class="stat-card">
           <span class="stat-num">EN</span>
-          <span class="stat-label">17149-3 maîtrisée</span>
+          <span class="stat-label">17149-3 mastered</span>
         </div>
         <div class="stat-card">
           <span class="stat-num">2</span>
-          <span class="stat-label">normes EC (EC3 & EC9)</span>
+          <span class="stat-label">EC standards (EC3 & EC9)</span>
         </div>
         <div class="stat-card">
           <span class="stat-num">6mo</span>
-          <span class="stat-label">stage bureau d'études</span>
+          <span class="stat-label">engineering internship</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">4A</span>
+          <span class="stat-num">Y4</span>
           <span class="stat-label">Polytech Lille</span>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════════════ PROJETS ═══════════════ -->
 <section id="projets">
   <div class="container">
-    <p class="section-label">02 — Réalisations</p>
-    <h2>Projets</h2>
- 
+    <p class="section-label">02 — Work</p>
+    <h2>Projects</h2>
+
     <div class="project-main">
       <div class="project-header">
-        <p class="project-type">Projet principal · Stage ingénieur 2025</p>
-        <h3 class="project-title">Outil de vérification réglementaire à la fatigue</h3>
-        <p class="project-org">CIMES France · intégré dans <span>Altair HyperView 2025</span></p>
+        <p class="project-type">Main project · Engineering internship 2026</p>
+        <h3 class="project-title">Regulatory Fatigue Verification Tool</h3>
+        <p class="project-org">CIMES France · integrated in <span>Altair HyperView 2025</span></p>
       </div>
- 
+
       <div class="project-body">
         <p class="project-desc">
-          Développement d'un plugin complet intégré à Altair HyperView permettant d'automatiser 
-          entièrement la vérification à la fatigue de structures ferroviaires. L'outil lit les 
-          résultats éléments finis, applique les méthodologies normatives (EN 17149-3, EC3, EC9), 
-          et génère un rapport de conformité structuré — remplaçant des heures de post-traitement 
-          manuel par quelques clics.
+          Development of a complete plugin integrated into Altair HyperView to fully automate 
+          the fatigue verification of railway structures. The tool reads finite element 
+          results, applies the relevant normative methodologies (EN 17149-3, EC3, EC9), 
+          and generates a structured compliance report — replacing hours of manual 
+          post-processing with a few clicks.
         </p>
- 
+
         <!-- Schéma flux de données -->
         <div class="schema-wrapper">
-          <p class="schema-title">// Architecture · flux de données</p>
+          <p class="schema-title">// Architecture · data flow</p>
           <svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
             <defs>
               <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -852,41 +848,41 @@
             <rect x="10" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
             <text x="75" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">FE RESULTS</text>
             <text x="75" y="93" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="9">HyperView API</text>
- 
+
             <rect x="200" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
-            <text x="265" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">EXTRACTION</text>
+            <text x="265" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">PROCESSING</text>
             <text x="265" y="93" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="9">Python · NumPy</text>
- 
+
             <rect x="390" y="40" width="145" height="80" rx="6" fill="rgba(59,130,246,0.08)" stroke="#3b82f6" stroke-width="1.2"/>
-            <text x="462" y="68" text-anchor="middle" fill="#93c5fd" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">VÉRIFICATION</text>
+            <text x="462" y="68" text-anchor="middle" fill="#93c5fd" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">VERIFICATION</text>
             <text x="462" y="84" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="8">EN 17149-3</text>
             <text x="462" y="98" text-anchor="middle" fill="#60a5fa" font-family="DM Mono, monospace" font-size="8">EC3 · EC9</text>
- 
+
             <rect x="590" y="55" width="130" height="50" rx="6" fill="#1d2535" stroke="#2a3450" stroke-width="1"/>
-            <text x="655" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">RAPPORT</text>
+            <text x="655" y="77" text-anchor="middle" fill="#8896b3" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.5">REPORT</text>
             <text x="655" y="93" text-anchor="middle" fill="#f59e0b" font-family="DM Mono, monospace" font-size="9">PyQt5 GUI</text>
- 
+
             <!-- arrows -->
             <line x1="141" y1="80" x2="198" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
             <line x1="331" y1="80" x2="388" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
             <line x1="536" y1="80" x2="588" y2="80" stroke="#3b82f6" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arr)"/>
- 
+
             <!-- labels below arrows -->
-            <text x="169" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">lecture</text>
-            <text x="359" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">calcul</text>
-            <text x="562" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">sortie</text>
+            <text x="169" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">read</text>
+            <text x="359" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">compute</text>
+            <text x="562" y="100" text-anchor="middle" fill="#4a5568" font-family="DM Mono,monospace" font-size="8">output</text>
           </svg>
         </div>
- 
+
         <div class="project-features">
-          <div class="feature"><span class="feature-dot"></span>Lecture automatique des contraintes nodales depuis HyperView via API</div>
-          <div class="feature"><span class="feature-dot"></span>Application des courbes de fatigue S-N (normes EN 17149-3)</div>
-          <div class="feature"><span class="feature-dot"></span>Vérification des assemblages acier (EC3) et aluminium (EC9)</div>
-          <div class="feature"><span class="feature-dot"></span>Interface graphique PyQt5 intégrée nativement dans HyperView</div>
-          <div class="feature"><span class="feature-dot"></span>Génération d'un rapport de conformité structuré et exportable</div>
-          <div class="feature"><span class="feature-dot"></span>Paramétrage des cas de charge et des classes de détail</div>
+          <div class="feature"><span class="feature-dot"></span>Automatic reading of nodal stresses from HyperView via API</div>
+          <div class="feature"><span class="feature-dot"></span>Application of S-N fatigue curves (EN 17149-3 standard)</div>
+          <div class="feature"><span class="feature-dot"></span>Verification of steel (EC3) and aluminium (EC9) joints</div>
+          <div class="feature"><span class="feature-dot"></span>PyQt5 graphical interface natively embedded in HyperView</div>
+          <div class="feature"><span class="feature-dot"></span>Generation of a structured, exportable compliance report</div>
+          <div class="feature"><span class="feature-dot"></span>Configuration of load cases and detail categories</div>
         </div>
- 
+
         <div class="tech-stack">
           <span class="tech">Python 3</span>
           <span class="tech">PyQt5</span>
@@ -899,15 +895,15 @@
         </div>
       </div>
     </div>
- 
+
   </div>
 </section>
 
 <!-- ═══════════════ DÉMO VIDÉO ═══════════════ -->
 <section id="demo">
   <div class="container">
-    <p class="section-label">03 — En action</p>
-    <h2>Démo</h2>
+    <p class="section-label">03 — In Action</p>
+    <h2>Demo</h2>
 
     <!--
       Pour intégrer la vraie vidéo plus tard, remplacer le bloc .demo-frame
@@ -926,45 +922,45 @@
         <div class="play-circle">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#60a5fa"><path d="M8 5v14l11-7z"/></svg>
         </div>
-        <p class="demo-status">Vidéo de démonstration — bientôt disponible</p>
-        <p class="demo-status-sub">Format 2 min max · outil en fonctionnement réel dans HyperView</p>
+        <p class="demo-status">Demo video — coming soon</p>
+        <p class="demo-status-sub">2 min max · tool running live in HyperView</p>
       </div>
     </div>
 
     <p class="demo-caption">
-      Cette courte vidéo montre l'outil en conditions réelles : import des résultats éléments finis 
-      dans HyperView, lancement de la vérification à la fatigue, et génération du contour de dommage 
-      et du rapport de conformité — <strong>de l'import du modèle au résultat final, sans manipulation 
-      manuelle intermédiaire</strong>.
+      This short video shows the tool under real conditions: importing finite element results 
+      into HyperView, running the fatigue verification, and generating the damage contour 
+      and compliance report — <strong>from model import to final result, with no manual 
+      intervention in between</strong>.
     </p>
 
     <div class="demo-chapters">
-      <span class="demo-chapter">00:00 — Import modèle</span>
-      <span class="demo-chapter">00:25 — Lancement du calcul</span>
-      <span class="demo-chapter">01:00 — Contour de dommage</span>
-      <span class="demo-chapter">01:35 — Rapport généré</span>
+      <span class="demo-chapter">00:00 — Model import</span>
+      <span class="demo-chapter">00:25 — Run calculation</span>
+      <span class="demo-chapter">01:00 — Damage contour</span>
+      <span class="demo-chapter">01:35 — Report generated</span>
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════════════ COMPÉTENCES ═══════════════ -->
 <section id="competences">
   <div class="container">
-    <p class="section-label">04 — Savoir-faire</p>
-    <h2>Compétences</h2>
+    <p class="section-label">04 — Skills</p>
+    <h2>Skills</h2>
     <div class="skills-grid">
       <div class="skill-group">
-        <p class="skill-group-title">Calcul & Normes</p>
+        <p class="skill-group-title">Analysis & Standards</p>
         <ul class="skill-list">
-          <li>Calcul à la fatigue</li>
-          <li>EN 17149-3 (ferroviaire)</li>
-          <li>Eurocode 3 (acier)</li>
+          <li>Fatigue analysis</li>
+          <li>EN 17149-3 (railway)</li>
+          <li>Eurocode 3 (steel)</li>
           <li>Eurocode 9 (aluminium)</li>
-          <li>Analyse éléments finis</li>
+          <li>Finite element analysis</li>
         </ul>
       </div>
       <div class="skill-group">
-        <p class="skill-group-title">Développement</p>
+        <p class="skill-group-title">Development</p>
         <ul class="skill-list">
           <li>Python</li>
           <li>PyQt5 (GUI)</li>
@@ -974,7 +970,7 @@
         </ul>
       </div>
       <div class="skill-group">
-        <p class="skill-group-title">Logiciels</p>
+        <p class="skill-group-title">Software</p>
         <ul class="skill-list">
           <li>Altair HyperView</li>
           <li>Altair HyperMesh</li>
@@ -984,29 +980,29 @@
         </ul>
       </div>
       <div class="skill-group">
-        <p class="skill-group-title">Bureau d'études</p>
+        <p class="skill-group-title">Engineering Office</p>
         <ul class="skill-list">
-          <li>Post-traitement FEA</li>
-          <li>Rédaction de notes de calcul</li>
-          <li>Rapports de conformité</li>
-          <li>Mécanique des structures</li>
-          <li>Environnement ferroviaire</li>
+          <li>FEA post-processing</li>
+          <li>Calculation report writing</li>
+          <li>Compliance reports</li>
+          <li>Structural mechanics</li>
+          <li>Railway environment</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ═══════════════ CONTACT ═══════════════ -->
 <section id="contact">
   <div class="container">
     <p class="section-label">05 — Contact</p>
-    <h2>Travaillons ensemble</h2>
+    <h2>Get in touch</h2>
     <div class="contact-box">
-      <h3>Vous avez un projet ?</h3>
+      <h3>Looking for an intern?</h3>
       <p>
-        Disponible pour des missions freelance dès la fin de ma 5A — calcul de structures, 
-        automatisation d'outils ingénierie, vérifications réglementaires.
+        Currently looking for an engineering internship starting February 2027 — structural 
+        analysis, fatigue calculation, and engineering tool automation.
       </p>
       <div class="contact-links">
         <a href="mailto:verleybastien0@gmail.com" class="contact-link">
@@ -1025,12 +1021,12 @@
     </div>
   </div>
 </section>
- 
+
 <footer>
   <div class="container">
     <p>© 2026 Bastien Verley · Polytech Lille · CIMES France</p>
   </div>
 </footer>
- 
+
 </body>
 </html>
