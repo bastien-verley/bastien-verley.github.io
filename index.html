@@ -939,12 +939,21 @@
 
         <div id="tech-details" class="tech-details">
           <div class="tech-detail-block">
-            <p class="tech-detail-title">Joint catalogue (Annex D)</p>
+            <p class="tech-detail-title">Accuracy & validation</p>
             <p class="tech-detail-text">
-              10 principal joint types (butt welds, cruciform, T-joints, lap joints, weld ends), 
-              each broken down into up to 4 sub-cases (weld toe, weld root, throat) with distinct 
-              ΔσC / m / N<sub>D</sub> S-N parameters for steel and aluminium — 26 sub-cases total, 
-              each independently configurable per set.
+              EC3 results validated against a reference calculation note, matching within 0.1%. 
+              EC9 has no dedicated reference note available, but was cross-checked using the same 
+              calculation note as EC3 with adapted inputs, given the methodological proximity 
+              between the two standards. EN 17149-3 is partially validated: no independent 
+              calculation note exists yet, so results were checked by hand calculation and 
+              cross-referenced against an internal Alstom document.
+            </p>
+          </div>
+          <div class="tech-detail-block">
+            <p class="tech-detail-title">Scale</p>
+            <p class="tech-detail-text">
+              Runs on HyperView models with over 3 million nodes. The largest model processed 
+              to date by element count contained 300,000 elements.
             </p>
           </div>
           <div class="tech-detail-block">
@@ -954,15 +963,6 @@
               full 6-component stress tensor (XX/YY/ZZ/XY/YZ/ZX) onto a fixed direction per 
               element (P1_max), with cumulative Miner damage summation across load cycles — 
               needed when the critical stress direction isn't aligned with the model's global axes.
-            </p>
-          </div>
-          <div class="tech-detail-block">
-            <p class="tech-detail-title">Safety factor computation</p>
-            <p class="tech-detail-text">
-              γM is derived from the product of a safety category factor (γM,S — low/medium/high) 
-              and a maintenance inspection factor (γM,I), then combined with weld-specific 
-              correction factors: fpost (post-treatment: grinding, TIG dressing), fQL (weld 
-              quality class), fCT (inspection class) and fres (residual stress condition).
             </p>
           </div>
         </div>
