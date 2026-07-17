@@ -417,6 +417,58 @@
     color: var(--accent2);
   }
 
+  /* ── DÉTAILS TECHNIQUES (dépliable) ── */
+  .details-toggle {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent2);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+    transition: all 0.2s;
+  }
+
+  .details-toggle:hover {
+    border-color: var(--accent2);
+    background: rgba(59,130,246,0.06);
+  }
+
+  .tech-details {
+    display: none;
+    margin-bottom: 2rem;
+  }
+
+  .tech-detail-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .tech-detail-block:last-child { margin-bottom: 0; }
+
+  .tech-detail-title {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .tech-detail-text {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
   /* ── SCHÉMA SVG ── */
   .schema-wrapper {
     background: var(--surface2);
@@ -782,7 +834,7 @@
       <div class="about-text">
         <p>
           <strong>4th-year engineering student at Polytech Lille</strong> (mechanics & structures track), 
-          currently completing a 6-month internship at <strong>CIMES France</strong>, an engineering 
+          completing a 3.5-month engineering internship at <strong>CIMES France</strong> (April–July 2026), an engineering 
           firm specialised in railway structures.
         </p>
         <p>
@@ -801,7 +853,7 @@
           <span class="stat-label">EC standards (EC3 & EC9)</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">6mo</span>
+          <span class="stat-num">3.5mo</span>
           <span class="stat-label">engineering internship</span>
         </div>
         <div class="stat-card">
@@ -828,11 +880,11 @@
 
       <div class="project-body">
         <p class="project-desc">
-          Development of a complete plugin integrated into Altair HyperView to fully automate 
-          the fatigue verification of railway structures. The tool reads finite element 
-          results, applies the relevant normative methodologies (EN 17149-3, EC3, EC9), 
-          and generates a structured compliance report — replacing hours of manual 
-          post-processing with a few clicks.
+          A plugin fully integrated into Altair HyperView that reads nodal stresses directly 
+          from finite element results, computes the fatigue damage index D per element against 
+          EN 17149-3, EC3 and EC9, and returns a structured compliance report — turning a 
+          multi-hour manual post-processing workflow into a batch run of a few clicks, 
+          across every subcase and joint configuration of a model at once.
         </p>
 
         <!-- Schéma flux de données -->
@@ -875,13 +927,46 @@
         </div>
 
         <div class="project-features">
-          <div class="feature"><span class="feature-dot"></span>Automatic reading of nodal stresses from HyperView via API</div>
-          <div class="feature"><span class="feature-dot"></span>Application of S-N fatigue curves (EN 17149-3 standard)</div>
-          <div class="feature"><span class="feature-dot"></span>Verification of steel (EC3) and aluminium (EC9) joints</div>
-          <div class="feature"><span class="feature-dot"></span>PyQt5 graphical interface natively embedded in HyperView</div>
-          <div class="feature"><span class="feature-dot"></span>Generation of a structured, exportable compliance report</div>
-          <div class="feature"><span class="feature-dot"></span>Configuration of load cases and detail categories</div>
+          <div class="feature"><span class="feature-dot"></span>Full Annex D catalogue: 10 joint types × 26 sub-cases, with S-N curves per material</div>
+          <div class="feature"><span class="feature-dot"></span>Dual stress mode: standard (σ1/σ3) or tensorial P1_max projection with cumulative Miner rule</div>
+          <div class="feature"><span class="feature-dot"></span>Full γM safety factor chain: safety category × inspection level × fpost/fQL/fCT correction factors</div>
+          <div class="feature"><span class="feature-dot"></span>Batch processing of damage index D across multiple sets and load subcases in one run</div>
+          <div class="feature"><span class="feature-dot"></span>Bilingual interface (FR/EN) for international deployment</div>
+          <div class="feature"><span class="feature-dot"></span>Exportable, structured compliance report per component</div>
         </div>
+
+        <button type="button" class="details-toggle" onclick="const d=document.getElementById('tech-details'); const open=d.style.display==='block'; d.style.display=open?'none':'block'; this.textContent=open?'▸ View technical details':'▾ Hide technical details';">▸ View technical details</button>
+
+        <div id="tech-details" class="tech-details">
+          <div class="tech-detail-block">
+            <p class="tech-detail-title">Joint catalogue (Annex D)</p>
+            <p class="tech-detail-text">
+              10 principal joint types (butt welds, cruciform, T-joints, lap joints, weld ends), 
+              each broken down into up to 4 sub-cases (weld toe, weld root, throat) with distinct 
+              ΔσC / m / N<sub>D</sub> S-N parameters for steel and aluminium — 26 sub-cases total, 
+              each independently configurable per set.
+            </p>
+          </div>
+          <div class="tech-detail-block">
+            <p class="tech-detail-title">Tensorial stress mode</p>
+            <p class="tech-detail-text">
+              Beyond the standard σ1/σ3 principal-stress mode, a tensorial mode projects the 
+              full 6-component stress tensor (XX/YY/ZZ/XY/YZ/ZX) onto a fixed direction per 
+              element (P1_max), with cumulative Miner damage summation across load cycles — 
+              needed when the critical stress direction isn't aligned with the model's global axes.
+            </p>
+          </div>
+          <div class="tech-detail-block">
+            <p class="tech-detail-title">Safety factor computation</p>
+            <p class="tech-detail-text">
+              γM is derived from the product of a safety category factor (γM,S — low/medium/high) 
+              and a maintenance inspection factor (γM,I), then combined with weld-specific 
+              correction factors: fpost (post-treatment: grinding, TIG dressing), fQL (weld 
+              quality class), fCT (inspection class) and fres (residual stress condition).
+            </p>
+          </div>
+        </div>
+
 
         <div class="tech-stack">
           <span class="tech">Python 3</span>
