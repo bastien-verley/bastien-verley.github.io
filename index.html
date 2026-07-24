@@ -364,6 +364,17 @@
     color: var(--accent-warm);
   }
 
+  .project-org a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .project-org a:hover {
+    color: var(--accent2);
+  }
+
   .project-body {
     padding: 2rem 2.5rem;
   }
@@ -704,6 +715,16 @@
     letter-spacing: 0.05em;
   }
 
+  footer p a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  footer p a:hover {
+    color: var(--accent2);
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -875,7 +896,7 @@
       <div class="project-header">
         <p class="project-type">Main project · Engineering internship 2026</p>
         <h3 class="project-title">Regulatory Fatigue Verification Tool</h3>
-        <p class="project-org">CIMES France · integrated in <span>Altair HyperView 2025</span></p>
+        <p class="project-org"><a href="https://www.cimesfrance.com" target="_blank" rel="noopener">CIMES France</a> · integrated in <span>Altair HyperView 2025</span></p>
       </div>
 
       <div class="project-body">
@@ -964,6 +985,16 @@
               full 6-component stress tensor (XX/YY/ZZ/XY/YZ/ZX) onto a fixed direction per 
               element (P1_max), with cumulative Miner damage summation across load cycles — 
               needed when the critical stress direction isn't aligned with the model's global axes.
+            </p>
+          </div>
+          <div class="tech-detail-block">
+            <p class="tech-detail-title">Thickness correction</p>
+            <p class="tech-detail-text">
+              EN 17149-3 and EC3 both apply a thickness correction factor to the fatigue 
+              limit (fépais and ks respectively), computed per element from plate thickness 
+              extracted directly from the finite element model (PSHELL/SECDATA). EC9 does 
+              not include this correction, consistent with EN 1999-1-3 which does not define 
+              one for this evaluation method.
             </p>
           </div>
         </div>
@@ -1108,9 +1139,9 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Bastien Verley · Polytech Lille · CIMES France</p>
+    <p>© 2026 Bastien Verley · Polytech Lille · <a href="https://www.cimesfrance.com" target="_blank" rel="noopener">CIMES France</a></p>
   </div>
 </footer>
 
 </body>
-</html>s
+</html>
